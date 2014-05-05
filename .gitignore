@@ -1,3 +1,5 @@
+.DS_Store
+
 # built application files
 *.apk
 *.ap_
@@ -10,12 +12,41 @@
 
 # generated files
 bin/
-build/
 gen/
+build/
+
+# local gradle files
+# =======
+# IntelliJ Idea/Android Studio files
+*.iml
+*.ipr
+*.iws
+.idea/workspace.xml
+.gradle/
 
 # Local configuration file (sdk path, etc)
 local.properties
 
-.project
-.classpath
+*.pydevproject
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
 
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
