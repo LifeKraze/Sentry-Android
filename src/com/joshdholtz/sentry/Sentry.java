@@ -335,6 +335,16 @@ public class Sentry {
 			event.put("message", message);
 			return this;
 		}
+
+        /**
+         * "user": "?"
+         * @param user
+         * @return
+         */
+        public SentryEventBuilder setUser(UserBuilder user) {
+            event.put("user", user.build());
+            return this;
+        }
 		
 		/**
 		 * "timestamp": "2011-05-02T17:41:36"
@@ -505,5 +515,46 @@ public class Sentry {
 	    }
 		
 	}
+
+    public static class UserBuilder {
+        private String id;
+        private String email;
+        private String username;
+        private String ipAddress;
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public void setIpAddress(String ipAddress) {
+            this.ipAddress = ipAddress;
+        }
+
+        public JSONObject build() {
+            if (id == null) return null;
+
+            JSONObject json = new JSONObject();
+
+            if (id != null) try {
+                json.put("id", id);
+                if (email != null) json.put("email", email);
+                if (username != null) json.put("username", email);
+                if (ipAddress != null) json.put("ip_address", email);
+
+            } catch (JSONException e) {
+                return null;
+            }
+
+            return json;
+        }
+    }
 
 }
